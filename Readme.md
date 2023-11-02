@@ -1,7 +1,27 @@
-Project Title
-A short description about the project and/or client.
+Simple Counter in Javascript
+
+--------------------------------------------------------------------------------------------------
 
 Getting Started
 Hi everyone, this is a project made for the Javascript basic course for Start2Impact.
 
-What I made is a simple counter, using only Java and HTML, that allows you to increase or decrease the count by clicking the + and - keys or reset the count by returning the variable to the default (i.e. 0).
+I made a simple counter, using only Javascript and HTML
+
+Built with
+
+-Javascript 
+
+
+Usage
+
+Open index.html and you will be looking at the counter in the center of the web page
+
+The couter allows you to increase or decrease the count by clicking the + and - keys or reset the count by returning the variable to the default (i.e. 0).
+
+
+Contact
+
+Davide Finocchio
+
+https://github.com/Thaavet
+
