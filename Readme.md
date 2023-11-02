@@ -13,6 +13,7 @@ I made a simple counter, using only Javascript and HTML
 
 - Javascript
 - Html
+- CSS
 
 --------------------------------------------------------------------------------------------------
 
