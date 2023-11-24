@@ -1,59 +1,78 @@
+function createElement(options) {
+  let element = document.createElement(options.tagName);
+  if (options.className) {
+    element.className = options.className;
+  }
+  if (options.id) {
+    element.id = options.id;
+  }
+  if (options.textContent) {
+    element.textContent = options.textContent;
+  }
+  if (options.children) {
+    for (let child of options.children) {
+      element.appendChild(createElement(child));
+    }
+  }
+  return element;
+}
 
-var container = document.createElement('div');
-container.className = 'container';
-
-var counterBody = document.createElement('div');
-counterBody.className = 'counter-body';
-
-var count = document.createElement('h1');
-count.id = 'count';
-count.textContent = '0';
-
-var counterButton = document.createElement('div');
-counterButton.className = 'counter-button';
-
-var minusButton = document.createElement('button');
-minusButton.id = 'minus';
-minusButton.textContent = '-';
-
-var resetButton = document.createElement('button');
-resetButton.id = 'reset';
-resetButton.textContent = 'Reset';
-
-var plusButton = document.createElement('button');
-plusButton.id = 'plus';
-plusButton.textContent = '+';
-
-counterButton.appendChild(minusButton);
-counterButton.appendChild(resetButton);
-counterButton.appendChild(plusButton);
-
-counterBody.appendChild(count);
-counterBody.appendChild(counterButton);
-
-container.appendChild(counterBody);
+let container = createElement({
+  tagName: 'div',
+  className: 'container',
+  children: [
+    {
+      tagName: 'div',
+      className: 'counter-body',
+      children: [
+        {
+          tagName: 'h1',
+          id: 'count',
+          textContent: '0'
+        },
+        {
+          tagName: 'div',
+          id: 'counter-button',
+          className: 'counter-button',
+          children: [
+            {
+              tagName: 'button',
+              id: 'minus',
+              textContent: '-'
+            },
+            {
+              tagName: 'button',
+              id: 'reset',
+              textContent: 'Reset'
+            },
+            {
+              tagName: 'button',
+              id: 'plus',
+              textContent: '+'
+            }
+          ]
+        }
+      ]
+    }
+  ]
+});
 
 document.body.appendChild(container);
 
-
-const total = document.getElementById('count');
 let value = 0;
+const total = document.getElementById('count');
+const counterButton = document.getElementById('counter-button');
 
-const btnIncrement = document.getElementById('plus');
-const btnDecrement = document.getElementById('minus');
-const btnReset = document.getElementById('reset');
+counterButton.addEventListener('click', (event) => {
+  const target = event.target;
 
-btnIncrement.addEventListener('click', () => {
-  value++;
-  total.textContent = value;
-});
+  if (target.id === 'plus') {
+    value++;
+  } else if (target.id === 'minus') {
+    value--;
+  } else if (target.id === 'reset') {
+    value = 0;
+  }
 
-btnDecrement.addEventListener('click', () => {
-  value--;
-  total.textContent = value;
-});
-
-btnReset.addEventListener('click', () => {
-  value = 0;
   total.textContent = value;
 });
